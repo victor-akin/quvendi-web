@@ -44,6 +44,7 @@ return [
         'prefix' => '',
         'middleware' => [
             \Nuwave\Lighthouse\Support\Http\Middleware\AcceptJson::class,
+            \Barryvdh\Cors\HandleCors::class,
         ],
     ],
 
@@ -154,8 +155,8 @@ return [
     |
     */
 
-    'debug' => \GraphQL\Error\Debug::INCLUDE_DEBUG_MESSAGE | \GraphQL\Error\Debug::INCLUDE_TRACE,
-
+    // 'debug' => \GraphQL\Error\Debug::INCLUDE_DEBUG_MESSAGE | \GraphQL\Error\Debug::INCLUDE_TRACE,
+    'debug' => \GraphQL\Error\Debug::INCLUDE_DEBUG_MESSAGE | \GraphQL\Error\Debug::RETHROW_INTERNAL_EXCEPTIONS,
     /*
     |--------------------------------------------------------------------------
     | Error Handlers

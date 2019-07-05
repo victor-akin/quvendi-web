@@ -12,5 +12,8 @@
 */
 
 Route::get('/', function () {
+    // var_dump($_SERVER);
+    // echo extension_loaded('pgsql') ? 'yes':'no';
+    // phpinfo();
     return view('welcome');
 });

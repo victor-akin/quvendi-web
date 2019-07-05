@@ -7,6 +7,7 @@ scalar Date @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\Date")
 type Query {
     users: [User!]! @paginate(type: "paginator" model: "App\\User")
     user(id: ID @eq): User @find(model: "App\\User")
+    allusers: [User!]! @all
 }
 
 type User {
@@ -17,3 +18,17 @@ type User {
     updated_at: DateTime!
     meter_number: String!
 }
+
+type Mutation {
+    createUser(
+        name: String! 
+        email: String! @rules(apply: ["email", "unique:users"])
+        password: String! @bcrypt @rules(apply: ["min:6"])
+        meter_number: String!
+    ): User! @create
+}
+
+
+
+
+
