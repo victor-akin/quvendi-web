@@ -12,6 +12,7 @@
 */
 
 Route::get('/', function () {
+    // return json_encode(['test' => "test data"]);
     // var_dump($_SERVER);
     // echo extension_loaded('pgsql') ? 'yes':'no';
     // phpinfo();

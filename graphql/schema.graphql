@@ -12,20 +12,29 @@ type Query {
 
 type User {
     id: ID!
-    name: String!
+    lastname: String!
+    firstname: String!
     email: String!
     created_at: DateTime!
     updated_at: DateTime!
-    meter_number: String!
 }
 
 type Mutation {
     createUser(
-        name: String! 
+        lastname: String! 
+        firstname: String!
         email: String! @rules(apply: ["email", "unique:users"])
         password: String! @bcrypt @rules(apply: ["min:6"])
-        meter_number: String!
     ): User! @create
+
+    signup(
+        lastname: String!
+        firstname: String!
+        email: String!
+        phone_no: String!
+        password: String! @bcrypt @rules(apply: ["min:6"])
+    ): User! @create
+
 }
 
 
