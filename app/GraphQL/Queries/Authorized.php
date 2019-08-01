@@ -1,12 +1,14 @@
 <?php
 
-namespace App\GraphQL\Mutations;
+namespace App\GraphQL\Queries;
 
 use App\User;
+use Illuminate\Support\Facades\Auth;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
+use Nuwave\Lighthouse\Exceptions\AuthenticationException;
 
-class Signup
+class Authorized
 {
     /**
      * Return a value for the field.
@@ -19,13 +21,19 @@ class Signup
      */
     public function resolve($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        return User::create([
-            'lastname' => $args['lastname'],
-            'firstname' => $args['firstname'],
-            'email' => $args['email'],
-            'phone_no' => $args['phone_no'],
-            'password' => $args['password']
-        ]);
-
+        if (!Auth::guard('api')->check()) {
+            return [
+                'isAuthorized' => false,
+                'message' => 'not authenticated', 
+                'user' => User::find(5)
+            ];
+        }
+        else {
+            return [
+                'isAuthorized' => true,
+                'message' => 'authenticated',
+                'user' => Auth::guard('api')->user()
+            ];
+        }
     }
 }

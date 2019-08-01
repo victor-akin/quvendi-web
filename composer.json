@@ -13,7 +13,9 @@
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
         "fzaninotto/faker": "^1.4",
+        "joselfonseca/lighthouse-graphql-passport-auth": "^1.4",
         "laravel/framework": "5.8.*",
+        "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0",
         "mll-lab/laravel-graphql-playground": "^1.0",
         "nuwave/lighthouse": "^3.7"
