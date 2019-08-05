@@ -12,13 +12,15 @@
 */
 
 Route::get('/', function () {
-    // return json_encode(['test' => "test data"]);
-    // var_dump($_SERVER);
-    // echo extension_loaded('pgsql') ? 'yes':'no';
-    // phpinfo();
+  
+    // echo ModelUID::generate('transactions');
+    
     return view('welcome');
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+

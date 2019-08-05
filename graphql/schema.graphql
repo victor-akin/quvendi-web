@@ -10,6 +10,7 @@ type Query {
     user(id: ID @eq): User @find(model: "App\\User")
     allusers: [User!]! @all
     authorized: AuthenticatedResponse @field(resolver: "App\\GraphQL\\Queries\\Authorized@resolve")
+    transactions: [Transaction!]! @field(resolver: "App\\GraphQL\\Queries\\Transactions@resolve")
 }
 
 type User {
@@ -17,14 +18,26 @@ type User {
     lastname: String!
     firstname: String!
     email: String!
+    user_uid: String!
     created_at: DateTime!
     updated_at: DateTime!
 }
 
+type Transaction {
+    transaction_type: String!
+    status: String!
+    created_at: DateTime!
+    amount: String!
+    status: String!
+    transaction_uid: String!
+    month: String!
+}
+
+
 type AuthenticatedResponse {
     isAuthorized: Boolean!
     message: String!
-    user: User!
+    user: User
 }
 
 type Mutation {
@@ -44,7 +57,6 @@ type Mutation {
     ): User!
 
 }
-
 
 
 

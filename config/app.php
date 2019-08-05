@@ -174,6 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ModelUIDServiceProvider::class,
 
     ],
 
@@ -225,6 +226,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
+        'ModelUID' => App\Helpers\HelperFacades\ModelUIDFacade::class,
 
     ],
 

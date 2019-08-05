@@ -2,13 +2,12 @@
 
 namespace App\GraphQL\Queries;
 
-use App\User;
+use App\Transaction;
 use Illuminate\Support\Facades\Auth;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
-use Nuwave\Lighthouse\Exceptions\AuthenticationException;
 
-class Authorized
+class Transactions
 {
     /**
      * Return a value for the field.
@@ -21,19 +20,16 @@ class Authorized
      */
     public function resolve($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-        if (!Auth::guard('api')->check()) {
-            return [
-                'isAuthorized' => false,
-                'message' => 'not authenticated', 
-                'user' => null
-            ];
-        }
-        else {
-            return [
-                'isAuthorized' => true,
-                'message' => 'authenticated',
-                'user' => Auth::guard('api')->user()
-            ];
-        }
+       if(!Auth::guard('api')->check()){
+           return ['status'=> 'dummy data'];
+       } else {
+           // get user_uid
+           $user_uid = Auth::guard('api')->user()->user_uid;
+
+           // get latest transactions of user with user_uid
+           $transactions = Transaction::orderBy('created_at','desc')->where('user_uid', $user_uid)->take(10)->get();
+        
+           return $transactions;   
+       }
     }
 }

@@ -18,7 +18,8 @@
         "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0",
         "mll-lab/laravel-graphql-playground": "^1.0",
-        "nuwave/lighthouse": "^3.7"
+        "nuwave/lighthouse": "^3.7",
+        "webpatser/laravel-uuid": "^3.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

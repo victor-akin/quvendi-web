@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Webpatser\Uuid\Uuid;
+use App\Helpers\ModelUID;
 use Laravel\Passport\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -37,11 +39,27 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * The transactions of a user
+     * 
+     */
+    public function transactions()
+    {
+        return $this->hasMany('App\Transaction', 'user_uid', 'user_uid');
+    }
+    
+    /**
+     * Create uuid for users
+     * 
+     */
+    public static function boot()
+    {
+        parent::boot();
+        self::creating(function ($model) {
+            $model->user_uid = ModelUID::generate('users');
+        });
+    }
 }
 
 
-// Client ID: 1
-// Client secret: Dm8gzQ2n3046j6e500aPNUYK6QVXv9esGGWMcL9c
-// Password grant client created successfully.
-// Client ID: 2
-// Client secret: slfhDHye9snnYazJNHxpBFPfeA9sMUJdKa8ZdaND
