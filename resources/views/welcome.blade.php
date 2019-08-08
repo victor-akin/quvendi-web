@@ -6,6 +6,9 @@
 
         <title>QuVendi</title>
 
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{{ asset('img/quvendi-logo-green.png') }}" type="image/png">
+
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
