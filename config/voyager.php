@@ -50,9 +50,9 @@ return [
     |--------------------------------------------------------------------------
     | Storage Config
     |--------------------------------------------------------------------------
-    |
+    | 
     | Here you can specify attributes related to your application file system
-    |
+    | 
     */
 
     'storage' => [
