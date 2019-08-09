@@ -12,9 +12,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-rtl/3.4.0/css/bootstrap-rtl.css">
         <link rel="stylesheet" href="{{ voyager_asset('css/rtl.css') }}">
     @endif
+    {{-- {{url('https://drive.google.com/open?id=1UDvpqpCeuCimOPFlJSxuGM7PCY0Pme8l')}} --}}
+    {{-- {{die('dead')}} --}}
     <style>
         body {
-            background-image:url('{{ Voyager::image( Voyager::setting("admin.bg_image"), voyager_asset("images/bg.jpg") ) }}');
+            /* TEMP */
+            background-image:url('https://drive.google.com/uc?id=1UDvpqpCeuCimOPFlJSxuGM7PCY0Pme8l');
+            /* TEMP */
+
+            /* background-image:url('{{ Voyager::image( Voyager::setting("admin.bg_image"), voyager_asset("images/bg.jpg") ) }}'); */
             background-color: {{ Voyager::setting("admin.bg_color", "#FFFFFF" ) }};
         }
         body.login .login-sidebar {
@@ -49,9 +55,11 @@
                     <div class="logo-title-container">
                         <?php $admin_logo_img = Voyager::setting('admin.icon_image', ''); ?>
                         @if($admin_logo_img == '')
-                        <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon">
+                        <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ URL('https://drive.google.com/uc?id=119tvwRPZ9mAC3qRfVy8-Sze1ixsdltNB') }}" alt="Logo Icon">
+                        {{-- <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ voyager_asset('images/logo-icon-light.png') }}" alt="Logo Icon"> --}}
                         @else
-                        <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon">
+                        <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ URL('https://drive.google.com/uc?id=119tvwRPZ9mAC3qRfVy8-Sze1ixsdltNB') }}" alt="Logo Icon">
+                        {{-- <img class="img-responsive pull-left flip logo hidden-xs animated fadeIn" src="{{ Voyager::image($admin_logo_img) }}" alt="Logo Icon"> --}}
                         @endif
                         <div class="copy animated fadeIn">
                             <h1>{{ Voyager::setting('admin.title', 'Voyager') }}</h1>
