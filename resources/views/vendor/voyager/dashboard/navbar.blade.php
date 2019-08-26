@@ -35,19 +35,11 @@
             <ul class="nav navbar-nav @if (config('voyager.multilingual.rtl')) navbar-left @else navbar-right @endif">
                 <li class="dropdown profile">
                     <a href="#" class="dropdown-toggle text-right" data-toggle="dropdown" role="button"
-                       {{-- aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img"> <span --}}
-
-                       {{-- TEMP --}}
-                       aria-expanded="false"><img src="{{ url('https://drive.google.com/uc?id=1Hl55A5yqqXSJnRyt_qQeYPemx34Lljf0') }}" class="profile-img">
-                       
+                       aria-expanded="false"><img src="{{ $user_avatar }}" class="profile-img">
                        <span class="caret"></span></a>
                     <ul class="dropdown-menu dropdown-menu-animated">
                         <li class="profile-img">
-                            {{-- <img src="{{ $user_avatar }}" class="profile-img"> --}}
-                            
-                            {{-- TEMP --}}
-                            <img src="{{ url('https://drive.google.com/uc?id=1Hl55A5yqqXSJnRyt_qQeYPemx34Lljf0') }}" class="profile-img">
-                            
+                            <img src="{{ $user_avatar }}" class="profile-img">
                             <div class="profile-body">
                                 <h5>{{ app('VoyagerAuth')->user()->name }}</h5>
                                 <h6>{{ app('VoyagerAuth')->user()->email }}</h6>

@@ -14,8 +14,8 @@
 Route::get('/', function () {
   
     // echo ModelUID::generate('transactions');
-    
-    return view('welcome');
+    return redirect('/admin');
+    // return view('welcome');
 });
 
 Auth::routes();
