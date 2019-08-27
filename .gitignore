@@ -6,6 +6,7 @@
 .env
 .env.*
 znotes
+error_log
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
