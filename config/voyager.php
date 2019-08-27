@@ -85,7 +85,7 @@ return [
                 'migrations', 'data_rows', 'data_types', 'menu_items', 
                 'password_resets', 'permission_role', 'settings', 'oauth_auth_codes',
                 'oauth_access_tokens', 'oauth_refresh_tokens', 'oauth_clients', 'oauth_personal_access_clients',
-                'pages', 'pages', 'categories', 'users_meta',
+                'pages', 'pages', 'categories', 'users_meta', 'translations', 'posts'
             ],
         ],
         'autoload_migrations' => true,
@@ -150,9 +150,9 @@ return [
         ],
 
         'widgets' => [
-            'TCG\\Voyager\\Widgets\\UserDimmer',
+            'App\\Http\\Widgets\\UserDimmer',
             'App\\Http\\Widgets\\TransactionDimmer',
-            // 'TCG\\Voyager\\Widgets\\PageDimmer',
+            'App\\Http\\Widgets\\MerchantsDimmer',
         ],
 
     ],
