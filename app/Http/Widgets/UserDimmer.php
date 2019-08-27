@@ -5,10 +5,10 @@ namespace App\Http\Widgets;
 use Illuminate\Support\Str;
 use TCG\Voyager\Facades\Voyager;
 use Arrilot\Widgets\AbstractWidget;
-use App\Transaction;
+use App\User;
 
 
-class TransactionDimmer extends AbstractWidget
+class UserDimmer extends AbstractWidget
 {
     /**
      * The configuration array.
@@ -23,19 +23,18 @@ class TransactionDimmer extends AbstractWidget
      */
     public function run()
     {
-        $count = Transaction::count();
-        $string = 'Transactions';
-        // $string = trans_choice('voyager::dimmer.post', $count);
+        $count = User::count();
+        $string = 'Users';
 
         return view('voyager::dimmer', array_merge($this->config, [
-            'icon'   => 'voyager-receipt',
+            'icon'   => 'voyager-person',
             'title'  => "{$count} {$string}",
-            'text'   => "There are $count transactions. Click button below to view all transactions.",
+            'text'   => "There are $count users. Click button below to view all users.",
             'button' => [
-                'text' => 'View all transactions',
-                'link' => route('voyager.transactions.index'),
+                'text' => 'View all users',
+                'link' => route('voyager.users.index'),
             ],
-            'image' => voyager_asset('images/widget-backgrounds/02.jpg'),
+            'image' => voyager_asset('images/widget-backgrounds/01.jpg'),
         ]));
     }
 
@@ -47,7 +46,6 @@ class TransactionDimmer extends AbstractWidget
     public function shouldBeDisplayed()
     {
         return true;
-        // return app('VoyagerAuth')->user()->can('browse', Voyager::model('P'));
     }
     
 }
