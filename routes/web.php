@@ -20,17 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-
-
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
 
-Route::post('/tq', function() {
-    
+Route::get('/tq', function() {
+    $user = App\User::find(1);
+    return json_encode(['response' => $user]);
 });

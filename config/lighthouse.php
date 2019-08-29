@@ -43,8 +43,8 @@ return [
     'route' => [
         'prefix' => '',
         'middleware' => [
+            'web',
             \Nuwave\Lighthouse\Support\Http\Middleware\AcceptJson::class,
-            \Barryvdh\Cors\HandleCors::class,
         ],
     ],
 
