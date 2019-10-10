@@ -495,7 +495,7 @@
         </g>
     </svg>
     <div class="text">Loading
-        <span class="dGfHfc">GraphQL Playground {{public_path()}}</span>
+        <span class="dGfHfc">GraphQL Playground</span>
     </div>
 </div>
 
