@@ -9,18 +9,16 @@
     "license": "MIT",
     "require": {
         "php": "^7.1.3",
+        "alcaeus/mongo-php-adapter": "^1.1",
         "barryvdh/laravel-cors": "^0.11.3",
         "doctrine/dbal": "^2.9",
         "fideloper/proxy": "^4.0",
-        "fzaninotto/faker": "^1.4",
         "joselfonseca/lighthouse-graphql-passport-auth": "^1.4",
         "laravel/framework": "5.8.*",
         "laravel/passport": "^7.3",
         "laravel/tinker": "^1.0",
         "mll-lab/laravel-graphql-playground": "^1.0",
-        "nuwave/lighthouse": "^3.7",
-        "tcg/voyager": "^1.2",
-        "webpatser/laravel-uuid": "^3.0"
+        "tcg/voyager": "^1.2"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",
@@ -59,8 +57,8 @@
     "prefer-stable": true,
     "scripts": {
         "post-install-cmd": [
-            "php artisan clear-compiled", 
-            "chmod -R 777 storage", 
+            "php artisan clear-compiled",
+            "chmod -R 777 storage",
             "php artisan passport:keys"
         ],
         "post-autoload-dump": [

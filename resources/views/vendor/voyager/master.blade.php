@@ -48,7 +48,7 @@
 </head>
 
 <body class="voyager @if(isset($dataType) && isset($dataType->slug)){{ $dataType->slug }}@endif">
-
+    
 <div id="voyager-loader">
     <?php $admin_loader_img = Voyager::setting('admin.loader', ''); ?>
     @if($admin_loader_img == '')
