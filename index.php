@@ -1,5 +1,5 @@
 <?php
-
+die(public_path());
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
