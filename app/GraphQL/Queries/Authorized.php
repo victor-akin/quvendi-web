@@ -6,7 +6,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
-use Nuwave\Lighthouse\Exceptions\AuthenticationException;
+// use Nuwave\Lighthouse\Exceptions\AuthenticationException;
 
 class Authorized
 {
@@ -24,7 +24,7 @@ class Authorized
         if (!Auth::guard('api')->check()) {
             return [
                 'isAuthorized' => false,
-                'message' => 'not authenticated', 
+                'message' => 'not authenticated',
                 'user' => null
             ];
         }

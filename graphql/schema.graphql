@@ -24,13 +24,11 @@ type User {
 }
 
 type Transaction {
-    transaction_type: String!
     status: String!
-    created_at: DateTime!
     amount: String!
-    status: String!
-    transaction_uid: String!
     month: String!
+    transaction_uid: String!
+    created_at: String!
 }
 
 

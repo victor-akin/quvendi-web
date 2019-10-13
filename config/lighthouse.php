@@ -43,7 +43,6 @@ return [
     'route' => [
         'prefix' => '',
         'middleware' => [
-            'web',
             \Nuwave\Lighthouse\Support\Http\Middleware\AcceptJson::class,
         ],
     ],

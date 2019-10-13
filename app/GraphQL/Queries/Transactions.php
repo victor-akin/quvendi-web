@@ -20,16 +20,25 @@ class Transactions
      */
     public function resolve($rootValue, array $args, GraphQLContext $context, ResolveInfo $resolveInfo)
     {
-       if(!Auth::guard('api')->check()){
-           return ['status'=> 'dummy data'];
-       } else {
-           // get user_uid
-           $user_uid = Auth::guard('api')->user()->user_uid;
+        if(!Auth::guard('api')->check()){
+            return [
+                [
+                    'status' => 'none',
+                    'created_at' => 'none',
+                    'amount' => 'none',
+                    'transaction_uid' => 'none',
+                    'month' => 'none'
+                ]
+            ];
+        } 
+        else {
+            // get user_uid
+            $user_uid = Auth::guard('api')->user()->user_uid;
 
-           // get latest transactions of user with user_uid
-           $transactions = Transaction::orderBy('created_at','desc')->where('user_uid', $user_uid)->take(10)->get();
+            // get latest transactions of user with user_uid
+            $transactions = Transaction::orderBy('created_at','desc')->where('user_uid', $user_uid)->take(10)->get();
         
-           return $transactions;   
+            return $transactions;   
        }
     }
 }
