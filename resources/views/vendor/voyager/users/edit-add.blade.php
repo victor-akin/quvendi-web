@@ -39,11 +39,11 @@
                         @endif
 
                         <div class="panel-body">
-                            {{-- {{dd($dataType->rows)}} --}}
+                            {{-- {{dd($dataTypeContent->id)}} --}}
 
                             @foreach($dataType->rows as $row)
                                 
-                                {{-- fields that are exceptions --}}
+                                {{-- fields that are exempted --}}
                                 @php if($row->field == 'password') continue;@endphp
                                 @php if($row->field == 'user_belongsto_role_relationship') continue;@endphp
                                 @php if($row->field == 'avatar') continue;@endphp
@@ -51,71 +51,64 @@
                                 @if($row->edit || $row->add)
                                     @if($row->required)
 
-                                        <div class="form-group">
-                                            {{-- <label for="{{ $row->field }}">{{ $row->display_name }}</label> --}}
-                                            <input type="{{ $row->type }}" class="form-control" id="{{ $row->field }}" name="{{ $row->field }}" placeholder="{{ $row->field }}"
+                                        <div class="form-group col-sm-6">
+                                            <label for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            <input type="{{ $row->type }}" class="form-control" id="{{ $row->field }}" name="{{ $row->field }}"
                                                 value="{{ old($row->field, $dataTypeContent->{$row->field} ?? '') }}">
                                         </div>
                                         
                                     @elseif($row->type == 'select_dropdown')
                                         
-                                        <div class="form-group">
+                                        <div class="form-group col-sm-6">
+                                            <label for="{{ $row->field }}">{{ $row->display_name }}</label>
                                             @php $options = $row->details @endphp
                                             @include('voyager::formfields.select_dropdown')
                                         </div>
                                     
+                                    @elseif($row->type == 'relationship')
+                                        <div class="form-group col-sm-6">
+                                            <label for="{{ $row->field }}">{{ $row->display_name }}</label>
+                                            @php
+                                                $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
+                                                $row     = $dataTypeRows->where('field', $row->field)->first();
+                                                $options = $row->details;
+                                            @endphp
+                                                @include('voyager::formfields.user-relationships')
+                                        </div>
                                     @else
 
-                                        <div class="form-group">
-                                            {{-- <label for="{{ $row->field }}">{{ $row->display_name }}</label> --}}
+                                        <div class="form-group col-sm-6">
+                                            <label for="{{ $row->field }}">{{ $row->display_name }}</label>
                                             <input @if($row->required == 1) required @endif type="{{ $row->type }}" class="form-control" name="{{ $row->field }}"
-                                                placeholder="{{ old($row->field, $row->display_name) }}"
                                                 value="{{ old($row->field, $dataTypeContent->{$row->field} ?? '') }}">
                                         </div>
 
-                                    @endif    
-                                @endif    
+                                    @endif
+                                @endif
 
                             @endforeach
 
-                            <div class="form-group hidden">
-                                {{-- <label for="password">{{ __('voyager::generic.password') }}</label> --}}
-                                @if(isset($dataTypeContent->password))
-                                    <br>
-                                    <small>{{ __('voyager::profile.password_hint') }}</small>
-                                @endif
-                                <input type="password" class="form-control" id="password" name="password" value="quvendi" autocomplete="new-password">
-                            </div>
-
                             @can('editRoles', $dataTypeContent)
-                                <div class="form-group">
-                                    <label for="default_role">{{ __('voyager::profile.role_default') }}</label>
+                                <div class="form-group col-sm-6">
+                                        <label>User's Role</label>
                                     @php
                                         $dataTypeRows = $dataType->{(isset($dataTypeContent->id) ? 'editRows' : 'addRows' )};
-                                        
                                         $row     = $dataTypeRows->where('field', 'user_belongsto_role_relationship')->first();
                                         $options = $row->details;
                                     @endphp
-                                    @include('voyager::formfields.relationship')
+                                    @include('voyager::formfields.user-relationships')
                                 </div>
                             @endcan
-                            @php
-                            if (isset($dataTypeContent->locale)) {
-                                $selected_locale = $dataTypeContent->locale;
-                            } else {
-                                $selected_locale = config('app.locale', 'en');
-                            }
-                            
-                            @endphp
-                            {{-- <div class="form-group">
-                                <label for="locale">{{ __('voyager::generic.locale') }}</label>
-                                <select class="form-control select2" id="locale" name="locale">
-                                    @foreach (Voyager::getLocales() as $locale)
-                                    <option value="{{ $locale }}"
-                                    {{ ($locale == $selected_locale ? 'selected' : '') }}>{{ $locale }}</option>
-                                    @endforeach
-                                </select>
-                            </div> --}}
+
+                            <div class="form-group col-sm-6">
+                                <label for="password">{{ __('voyager::generic.password') }}</label>
+                                <input type="password" class="form-control" id="password" name="password" 
+                                 value="@if(is_null($dataTypeContent->id)) password @endif" autocomplete="new-password">
+                                @if(isset($dataTypeContent->password))
+                                    <small>{{ __('voyager::profile.password_hint') }}</small>
+                                @endif
+                            </div>
+
                         </div>
                     </div>
                 </div>

@@ -25,11 +25,13 @@ class MerchantsDimmer extends AbstractWidget
     {
         $count = Merchant::count();
         $string = 'Merchants';
+        $merch = $count > 1 ? 'merchants' : 'merchant';
+        $nv = $count > 1 ? 'are' : 'is';
 
         return view('voyager::dimmer', array_merge($this->config, [
             'icon'   => 'voyager-polaroid',
             'title'  => "{$count} {$string}",
-            'text'   => "There are $count merchants. Click button below to view all merchants.",
+            'text'   => "There $nv $count $merch Click button below to view all merchants.",
             'button' => [
                 'text' => 'View all merchants',
                 'link' => route('voyager.merchants.index'),

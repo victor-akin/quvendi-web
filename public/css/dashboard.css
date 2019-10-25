@@ -1,0 +1,64 @@
+.dashboard-quick-links{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.quick-link-cards{
+    display: flex;
+    justify-content: center;
+}
+.quick-link-card{
+    background-color: white;
+    height: 100px;
+    margin: 10px 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: 	#708090;
+    box-shadow: 0px 1px 0px 0px rgba(0,255,127 ,0.6);
+}
+.quick-link-card:hover{
+    box-shadow: 0px 2px 0px 0px rgba(0,255,127 ,2);
+}
+.quick-links-header{
+    text-align: center;
+}
+.quvendi-analytics-container{
+    margin-top: 20px;
+}
+.new-users, .num-transactions, .amt-transactions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-family: Cambria;
+    background-color: white;
+}
+.Titles-main, .Titles-sub{
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+}
+.FlexGrid{
+    justify-content: space-evenly;
+}
+.Chartjs-display{
+    height: 150px;
+    background-color: white;
+    padding: 20px;
+}
+.analytics-chart{
+    margin-top: 70px;
+    padding-top: 20px;
+    background-color: white;
+}
+.chart-title{
+    font-size: 20px;
+}
+

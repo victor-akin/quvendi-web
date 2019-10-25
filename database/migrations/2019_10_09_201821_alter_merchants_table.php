@@ -14,6 +14,7 @@ class AlterMerchantsTable extends Migration
     public function up()
     {
         Schema::table('merchants', function(Blueprint $table) {
+            $table->boolean('suspended')->nullable()->default(0);
             $table->string('office_number')->nullable();
             $table->string('street_name')->nullable();
             $table->string('town')->nullable();
@@ -36,9 +37,20 @@ class AlterMerchantsTable extends Migration
     public function down()
     {
         Schema::table('merchants', function(Blueprint $table) {
-            $table->dropColumn(['office_number', 'street_name', 'town', 'lga', 'state', 'contact_person_title',
-                'contact_person_firstname', 'contact_person_lastname', 'contact_person_sex', 'contact_person_phone',
-                'contact_person_email']);
+            $table->dropColumn([
+                'office_number', 
+                'street_name', 
+                'town', 
+                'lga', 
+                'state',
+                'suspended', 
+                'contact_person_title',
+                'contact_person_firstname', 
+                'contact_person_lastname', 
+                'contact_person_sex', 
+                'contact_person_phone',
+                'contact_person_email'
+            ]);
         });
     }
 }
