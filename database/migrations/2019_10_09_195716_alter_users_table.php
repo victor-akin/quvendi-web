@@ -18,7 +18,7 @@ class AlterUsersTable extends Migration
             $table->string('street_name')->nullable();
             $table->string('lga')->nullable();
             $table->string('state')->nullable();
-            $table->tinyInteger('suspended')->nullable()->default(0);
+            $table->enum('suspended', ['Yes', 'No'])->default('No');
             $table->string('residential_state')->nullable();
             $table->string('residential_lga')->nullable();
             $table->string('residential_town')->nullable();
@@ -36,10 +36,11 @@ class AlterUsersTable extends Migration
     {
         Schema::table('users', function(Blueprint $table) {
             $table->dropColumn([
-                'house_no', 
-                'street_name', 
-                'lga', 
-                'state', 
+                'house_no',
+                'street_name',
+                'suspended',
+                'lga',
+                'state',
                 'sex',
                 'residential_state',
                 'residential_town',

@@ -32,6 +32,7 @@ class User extends \TCG\Voyager\Models\User
         'town',
         'lga',
         'state',
+        'role_id',
         'sex'
     ];
 

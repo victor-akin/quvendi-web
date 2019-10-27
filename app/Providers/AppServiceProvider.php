@@ -2,9 +2,6 @@
 
 namespace App\Providers;
 
-use TCG\Voyager\Http\Controllers\VoyagerController;
-use App\Http\Controllers\VoyagerDashboardController;
-
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -16,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(VoyagerController::class, VoyagerDashboardController::class);
+        //
     }
 
     /**
